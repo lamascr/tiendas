@@ -131,8 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Raw response:', rawText);
             console.log('Parsed data:', data);
 
-            let botText = '';
-
+            // botText is already declared above
             if (typeof data === 'string') {
                 botText = data;
             } else if (Array.isArray(data) && data.length > 0) {
