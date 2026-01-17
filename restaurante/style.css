@@ -370,6 +370,7 @@ select {
     }
 }
 
+<<<<<<< HEAD
 /* n8n Chat Customization - Premium Gold & Dark Theme */
 :root {
     --chat--color--primary: #d4af37;
@@ -444,3 +445,135 @@ select {
 
 /* Note: Since n8n widget is in shadow DOM, these specific class overrides 
    might depend on how the library exposes them. We rely mostly on variables. */
+=======
+/* Chat Widget Styles */
+.chat-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 2000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#chat-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+#chat-toggle:hover {
+    transform: scale(1.1);
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: #1a1a1a;
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+    transform-origin: bottom right;
+}
+
+.chat-window.hidden {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.chat-header {
+    padding: 1rem;
+    background: var(--gold);
+    color: var(--dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#chat-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: #111;
+}
+
+.message {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.message.bot {
+    background: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.message.user {
+    background: var(--gold);
+    color: var(--dark);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input {
+    padding: 1rem;
+    background: #1a1a1a;
+    display: flex;
+    gap: 0.5rem;
+    border-top: 1px solid #333;
+}
+
+#chat-input-field {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+}
+
+#chat-send {
+    background: var(--gold);
+    border: none;
+    color: var(--dark);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+>>>>>>> parent of ce2ab59 (5)

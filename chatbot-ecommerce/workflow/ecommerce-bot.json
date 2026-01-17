@@ -1,0 +1,264 @@
+{
+  "name": "E-commerce Chatbot Demo",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "webhookId": "35cfb3de-6a18-4878-8d73-abe2130a0355"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ ($json.body.message || $json.body).toLowerCase() }}",
+              "operation": "contains",
+              "value2": "hola"
+            }
+          ]
+        }
+      },
+      "name": "Hola?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 160]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ ($json.body.message || $json.body).toLowerCase() }}",
+              "operation": "contains",
+              "value2": "pedido"
+            }
+          ]
+        }
+      },
+      "name": "Pedido?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ ($json.body.message || $json.body).toLowerCase() }}",
+              "operation": "contains",
+              "value2": "precio"
+            }
+          ]
+        }
+      },
+      "name": "Precio?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 440]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "¡Hola! 👋 Soy tu asistente virtual. Puedo ayudarte a buscar productos, ver el estado de tu pedido o responder dudas generales."
+            }
+          ]
+        }
+      },
+      "name": "Welcome Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [900, 120]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "Por favor, indícame tu número de pedido para poder buscarlo en el sistema. (Ejemplo: #12345)"
+            }
+          ]
+        }
+      },
+      "name": "Order Status",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [900, 280]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "Nuestros precios son muy competitivos. Puedes ver las ofertas actuales en la sección de 'Colección' de nuestra web."
+            }
+          ]
+        }
+      },
+      "name": "Price Inquiry",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [900, 440]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "Lo siento, no entendí tu consulta. ¿Podrías reformularla? Intenta preguntar por 'pedidos', 'hola' o 'precios'."
+            }
+          ]
+        }
+      },
+      "name": "Default Fallback",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [900, 600]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{\n{\n  \"status\": \"success\",\n  \"message\": $json.response\n}\n}}",
+        "options": {}
+      },
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Hola?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Pedido?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Precio?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hola?": {
+      "main": [
+        [
+          {
+            "node": "Welcome Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pedido?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedido?": {
+      "main": [
+        [
+          {
+            "node": "Order Status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Precio?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Precio?": {
+      "main": [
+        [
+          {
+            "node": "Price Inquiry",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Default Fallback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Welcome Message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Order Status": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Price Inquiry": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Fallback": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
