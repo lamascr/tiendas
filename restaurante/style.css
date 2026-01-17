@@ -370,6 +370,7 @@ select {
     }
 }
 
+<<<<<<< HEAD
 /* Chatbot Widget Styles - Adapted for Lumière */
 #chatbot-widget {
     position: fixed;
@@ -602,4 +603,46 @@ select {
 
 .typing-dot:nth-child(2) {
     animation-delay: -0.16s;
+=======
+/* n8n Chat Customization */
+:root {
+    --chat--color--primary: #d4af37;
+    /* Gold */
+    --chat--color--primary-shade-50: #b8860b;
+    --chat--color--primary--shade-100: #8f6b0f;
+    --chat--color--secondary: #0a0a0a;
+    /* Dark */
+    --chat--color-secondary-shade-50: #1a1a1a;
+    --chat--color-white: #ffffff;
+    --chat--color-light: #f5f5f5;
+    --chat--color-light-shade-50: #e0e0e0;
+    --chat--color-light-shade-100: #cccccc;
+    --chat--color-medium: #888888;
+    --chat--color-dark: #050505;
+    --chat--color-disabled: #555555;
+    --chat--color-typing: #d4af37;
+
+    --chat--spacing: 1rem;
+    --chat--border-radius: 20px;
+    --chat--transition-duration: 0.3s;
+
+    --chat--window--width: 380px;
+    --chat--window--height: 600px;
+
+    --chat--header--background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    --chat--header--color: var(--dark);
+
+    --chat--message--user--background: var(--gold);
+    --chat--message--user--color: var(--dark);
+
+    --chat--toggle--background: var(--gold);
+    --chat--toggle--color: var(--dark);
+    --chat--toggle--hover--scale: 1.1;
+}
+
+/* Ensure z-index is high enough */
+.n8n-chat-widget {
+    z-index: 9999 !important;
+    font-family: 'Montserrat', sans-serif !important;
+>>>>>>> parent of 0f4b9f6 (24)
 }
