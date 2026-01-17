@@ -13,18 +13,18 @@ createChat({
     loadPreviousSession: true,
     metadata: {},
     showWelcomeScreen: false,
-    defaultLanguage: 'es',
+    defaultLanguage: 'en',
     initialMessages: [
-        '¡Hola! 👋',
-        'Soy Nathan, el asistente de Lumière Bistro. ¿En qué puedo ayudarte hoy?'
+        'Hi there! 👋',
+        'My name is Nathan. How can I assist you today?'
     ],
     i18n: {
-        es: {
-            title: '¡Hola! 👋',
-            subtitle: "Estamos aquí para ayudarte 24/7.",
+        en: {
+            title: 'Hi there! 👋',
+            subtitle: "Start a chat. We're here to help you 24/7.",
             footer: '',
-            getStarted: 'Nueva conversación',
-            inputPlaceholder: 'Escribe tu pregunta...',
+            getStarted: 'New Conversation',
+            inputPlaceholder: 'Type your question..',
         },
     },
     enableStreaming: false,
