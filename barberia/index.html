@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blade & Style | Barbería Premium</title>
+    <meta name="description"
+        content="Barbería clásica con técnicas modernas. Cortes precisos, afeitados profesionales y estilo inigualable.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">BLADE<span>&</span>STYLE</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Estilos</a></li>
+                <li><a href="#equipo">Barberos</a></li>
+            </ul>
+            <a href="#reserva" class="btn-barber">Reservar Cita</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="badge-vintage">EST. 2020</div>
+                <h1>EL ARTE<br>DEL CORTE<br>PERFECTO</h1>
+                <p class="tagline">Tradición, Precisión y Estilo Masculino</p>
+                <div class="hero-actions">
+                    <a href="#reserva" class="btn-primary-barber">Reserva Ya</a>
+                    <a href="#servicios" class="btn-secondary-barber">Ver Servicios</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">↓</div>
+        </section>
+
+        <section id="servicios" class="services-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">NUESTROS SERVICIOS</span>
+                    <h2>Maestría en cada detalle</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="services-grid">
+                    <div class="service-box fade-in">
+                        <div class="icon">✂️</div>
+                        <h3>Corte Clásico</h3>
+                        <p>Técnicas tradicionales con acabado impecable.</p>
+                        <span class="price">25€</span>
+                    </div>
+                    <div class="service-box fade-in">
+                        <div class="icon">🪒</div>
+                        <h3>Afeitado Navaja</h3>
+                        <p>Experiencia premium con toalla caliente.</p>
+                        <span class="price">20€</span>
+                    </div>
+                    <div class="service-box fade-in">
+                        <div class="icon">💈</div>
+                        <h3>Corte + Barba</h3>
+                        <p>Combo completo para un look impecable.</p>
+                        <span class="price">40€</span>
+                    </div>
+                    <div class="service-box fade-in">
+                        <div class="icon">🎨</div>
+                        <h3>Diseño & Color</h3>
+                        <p>Para quienes buscan destacar.</p>
+                        <span class="price">Desde 35€</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="gallery-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">GALERÍA DE ESTILOS</span>
+                    <h2>Encuentra tu corte ideal</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="filter-btns">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="clasico">Clásico</button>
+                    <button class="filter-btn" data-filter="moderno">Moderno</button>
+                    <button class="filter-btn" data-filter="fade">Fade</button>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="clasico">
+                        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400"
+                            alt="Corte Clásico">
+                        <div class="overlay">
+                            <h4>Pompadour Clásico</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="moderno">
+                        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400"
+                            alt="Corte Moderno">
+                        <div class="overlay">
+                            <h4>Texturizado Lateral</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="fade">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400" alt="Fade">
+                        <div class="overlay">
+                            <h4>High Fade</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="clasico">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400" alt="Clásico">
+                        <div class="overlay">
+                            <h4>Side Part</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="moderno">
+                        <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=400" alt="Moderno">
+                        <div class="overlay">
+                            <h4>Crop Texturizado</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="fade">
+                        <img src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?w=400" alt="Fade">
+                        <div class="overlay">
+                            <h4>Bald Fade</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipo" class="team-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">NUESTRO EQUIPO</span>
+                    <h2>Maestros barberos</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="team-grid">
+                    <div class="barber-card">
+                        <div class="barber-img"
+                            style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400')">
+                        </div>
+                        <h3>Carlos Mendoza</h3>
+                        <span class="specialty">Especialista en Fades</span>
+                        <p>10 años de experiencia</p>
+                    </div>
+                    <div class="barber-card">
+                        <div class="barber-img"
+                            style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400')">
+                        </div>
+                        <h3>Javier Ruiz</h3>
+                        <span class="specialty">Master Barbero</span>
+                        <p>15 años de experiencia</p>
+                    </div>
+                    <div class="barber-card">
+                        <div class="barber-img"
+                            style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400')">
+                        </div>
+                        <h3>Miguel Ángel</h3>
+                        <span class="specialty">Diseño & Color</span>
+                        <p>8 años de experiencia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reserva" class="booking-section">
+            <div class="container">
+                <div class="booking-card">
+                    <h2>Reserva tu cita</h2>
+                    <p>Elije tu barbero, fecha y hora preferida</p>
+                    <form id="booking-form">
+                        <div class="form-row">
+                            <div class="input-box">
+                                <label>Nombre</label>
+                                <input type="text" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="input-box">
+                                <label>Teléfono</label>
+                                <input type="tel" placeholder="+34 600 000 000" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-box">
+                                <label>Servicio</label>
+                                <select required>
+                                    <option>Corte Clásico</option>
+                                    <option>Afeitado Navaja</option>
+                                    <option>Corte + Barba</option>
+                                    <option>Diseño & Color</option>
+                                </select>
+                            </div>
+                            <div class="input-box">
+                                <label>Barbero</label>
+                                <select required>
+                                    <option>Carlos Mendoza</option>
+                                    <option>Javier Ruiz</option>
+                                    <option>Miguel Ángel</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-box">
+                                <label>Fecha</label>
+                                <input type="date" required>
+                            </div>
+                            <div class="input-box">
+                                <label>Hora</label>
+                                <input type="time" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit">CONFIRMAR CITA</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-barber">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">BLADE<span>&</span>STYLE</div>
+                <p>© 2026 Blade & Style. Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#">IG</a>
+                    <a href="#">FB</a>
+                    <a href="#">TW</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{
+    "name": "restaurante-menu",
+    "version": "1.0.0",
+    "description": "Menu generation",
+    "dependencies": {
+        "xlsx": "^0.18.5"
+    }
+}

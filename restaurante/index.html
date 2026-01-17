@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lumière Bistro - Experiencia gastronómica de alta cocina y atmósfera exclusiva.">
+    <title>Lumière Bistro | Alta Cocina & Exclusividad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- SheetJS Library for reading Excel files -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">LUMIÈRE<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#menu">El Menú</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+            </ul>
+            <div class="cta-nav">
+                <a href="#reservas" class="btn-outline">Mesa Directa</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <span class="hero-subtitle fade-in">Un viaje a través de los sentidos</span>
+                <h1 class="fade-in-delay">Sabor, <br><span class="accent">Luz & Maestría</span></h1>
+                <p class="fade-in-delay-2">Descubra una propuesta gastronómica donde la tradición se encuentra con la
+                    vanguardia en un entorno inigualable.</p>
+                <div class="hero-actions fade-in-delay-3">
+                    <a href="#menu" class="btn-gold">Explorar Menú</a>
+                    <a href="#reservas" class="btn-text">Ver Disponibilidad</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="container section-padding">
+            <div class="section-header">
+                <h2 class="serif-title">Selección del Chef</h2>
+                <p>Ingredientes locales, técnicas globales.</p>
+            </div>
+
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="entrantes">Entrantes</button>
+                <button class="filter-btn" data-filter="principales">Principales</button>
+                <button class="filter-btn" data-filter="postres">Postres</button>
+            </div>
+
+            <!-- Dynamic Menu Grid -->
+            <div class="menu-grid" id="menu-grid">
+                <!-- Items will be loaded from menu.xlsx -->
+                <div class="loading-message" style="text-align:center; grid-column: 1/-1; padding: 2rem;">
+                    Cargando menú...
+                </div>
+            </div>
+        </section>
+
+        <section id="reservas">
+            <div class="container reserva-box">
+                <div class="reserva-text">
+                    <h2 class="serif-title">Asegure su Mesa</h2>
+                    <p>Las mejores experiencias requieren planificación. Reserve su espacio para una noche inolvidable.
+                    </p>
+                </div>
+                <form id="reserva-form" class="glass-form">
+                    <div class="form-row">
+                        <input type="date" required>
+                        <select required>
+                            <option value="">Hora</option>
+                            <option>20:00</option>
+                            <option>21:00</option>
+                            <option>22:00</option>
+                        </select>
+                    </div>
+                    <input type="number" placeholder="Personas" min="1" max="10" required>
+                    <button type="submit" class="btn-gold full-width">Solicitar Reserva</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">LUMIÈRE<span>.</span></div>
+            <p>Calle de la Luz, 42. Madrid. | +34 912 345 678</p>
+            <div class="social-links">
+                <a href="#">IG</a>
+                <a href="#">FB</a>
+            </div>
+            <p class="copyright">&copy; 2026 Lumière Bistro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

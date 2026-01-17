@@ -1,0 +1,312 @@
+:root {
+    --primary: #c5a880;
+    --primary-light: #e0ccb1;
+    --secondary: #1a1a1a;
+    --text: #ffffff;
+    --text-muted: #b0b0b0;
+    --bg: #0d0d0d;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header & Nav */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: var(--transition);
+}
+
+header.scrolled {
+    background: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: url('boutique_hero_background_1768557215598.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.2));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.accent-text {
+    color: var(--primary);
+    font-style: italic;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--primary);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(197, 168, 128, 0.2);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: transparent;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--glass-border);
+    margin-left: 1rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background-color: var(--glass);
+    border-color: var(--primary);
+}
+
+/* Collection Section */
+#coleccion {
+    padding: 10rem 0;
+}
+
+.section-title {
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.title-underline {
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary);
+    margin: 0 auto;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.product-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.product-img {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    transition: var(--transition);
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 2rem;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-info p {
+    color: var(--text-muted);
+}
+
+/* Footer */
+footer {
+    padding: 8rem 0 3rem 0;
+    background: #080808;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+}
+
+.footer-cta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-cta p {
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s 0.3s forwards;
+}
+
+.fade-in-delay-2 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    h1 { font-size: 3.5rem; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    h1 { font-size: 2.5rem; }
+    .product-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}

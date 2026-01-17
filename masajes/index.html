@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Massage | El Arte de la Relajación</title>
+    <meta name="description"
+        content="Experimente la serenidad absoluta con nuestros tratamientos de masaje premium. Reserve su momento de paz hoy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">ZEN<span>MASSAGE</span></div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Tratamientos</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+            </ul>
+            <a href="#reserva" class="btn-zen">Reservar Cita</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <span class="badget">Santuario de Bienestar</span>
+                <h1>Reconecte con su paz interior</h1>
+                <p>Terapias manuales diseñadas para liberar tensión y restaurar la armonía vital.</p>
+                <div class="hero-btns">
+                    <a href="#servicios" class="btn-primary">Ver Tratamientos</a>
+                    <a href="#reserva" class="btn-secondary">Reserva Ahora</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="container section-padding">
+            <div class="section-header">
+                <h2>Tratamientos Exclusivos</h2>
+                <div class="divider"></div>
+                <p>Cada sesión es personalizada según sus necesidades físicas y emocionales.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-treatment="relajante">
+                    <div class="card-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
+                    </div>
+                    <div class="card-body">
+                        <h3>Masaje Relajante</h3>
+                        <p>Movimientos suaves y rítmicos para eliminar el estrés diario.</p>
+                        <span class="price">Desde 45€</span>
+                    </div>
+                </div>
+                <div class="service-card" data-treatment="profundo">
+                    <div class="card-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
+                    </div>
+                    <div class="card-body">
+                        <h3>Tejido Profundo</h3>
+                        <p>Enfoque terapéutico para liberar tensiones musculares crónicas.</p>
+                        <span class="price">Desde 60€</span>
+                    </div>
+                </div>
+                <div class="service-card" data-treatment="piedras">
+                    <div class="card-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
+                    </div>
+                    <div class="card-body">
+                        <h3>Piedras Volcánicas</h3>
+                        <p>Calor terapéutico que penetra profundamente en los músculos.</p>
+                        <span class="price">Desde 75€</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="full-width benefits-section">
+            <div class="container grid-2">
+                <div class="benefits-visual fade-in-scroll">
+                    <img src="https://images.unsplash.com/photo-1600334129128-f8526ed9f2a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Spa environment">
+                </div>
+                <div class="benefits-content">
+                    <span class="sub">¿Por qué Zen Massage?</span>
+                    <h2>Masajes que cambian su día a día</h2>
+                    <ul class="ben-list">
+                        <li><strong>Reducción de Ansiedad:</strong> Equilibrio mental inmediato.</li>
+                        <li><strong>Mejora Circulatoria:</strong> Oxigenación celular profunda.</li>
+                        <li><strong>Alivio del Dolor:</strong> Especialistas en ergonomía y postura.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="reserva" class="container section-padding">
+            <div class="booking-wrap glass">
+                <div class="booking-header">
+                    <h2>Reserve su momento</h2>
+                    <p>Seleccione fecha y hora para su tratamiento.</p>
+                </div>
+                <form id="booking-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" placeholder="Ej. Ana García" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Tratamiento</label>
+                            <select>
+                                <option>Relajante</option>
+                                <option>Tejido Profundo</option>
+                                <option>Piedras Volcánicas</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Fecha</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="input-group">
+                            <label>WhatsApp</label>
+                            <input type="tel" placeholder="+34 600 000 000" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-active">Confirmar Disponibilidad</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-zen">
+        <div class="container">
+            <div class="logo">ZEN<span>MASSAGE</span></div>
+            <p>© 2026 Santuario de Paz. Todos los derechos reservados.</p>
+            <div class="social">
+                <a href="#">IG</a>
+                <a href="#">FB</a>
+                <a href="#">TW</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

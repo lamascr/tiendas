@@ -1,0 +1,41 @@
+{
+  "name": "blade-style-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "Agente de IA conversacional para reservas de barbería vía WhatsApp Business API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "whatsapp",
+    "ai-agent",
+    "openai",
+    "barberia",
+    "reservas"
+  ],
+  "author": "Carlos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "openai": "^4.24.1",
+    "mongoose": "^8.0.3",
+    "node-cron": "^3.0.3",
+    "winston": "^3.11.0",
+    "joi": "^17.11.0",
+    "date-fns": "^3.0.6",
+    "googleapis": "^129.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

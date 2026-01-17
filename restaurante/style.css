@@ -1,0 +1,371 @@
+:root {
+    --gold: #d4af37;
+    --gold-dark: #b8860b;
+    --dark: #0a0a0a;
+    --light: #f5f5f5;
+    --muted: #888;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.serif-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 2.5rem 0;
+    transition: var(--transition);
+}
+
+header.scrolled {
+    padding: 1.2rem 0;
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.btn-outline {
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+/* Hero */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 1));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    display: block;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+}
+
+h1 .accent {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 1.25rem 3.5rem;
+    background: var(--gold);
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.btn-gold:hover {
+    background: var(--gold-dark);
+    transform: translateY(-5px);
+}
+
+.btn-text {
+    display: inline-block;
+    margin-left: 2.5rem;
+    color: var(--light);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.btn-text::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: var(--transition);
+}
+
+.btn-text:hover::after {
+    width: 100%;
+}
+
+/* Menu Section */
+.section-padding {
+    padding: 12rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.menu-filters {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    color: var(--gold);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+}
+
+.menu-item {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.menu-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.item-img {
+    width: 220px;
+    height: 160px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--glass-border);
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+.item-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+}
+
+.price {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Reservas */
+#reservas {
+    background: #050505;
+    padding: 10rem 0;
+}
+
+.reserva-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.glass-form {
+    background: var(--glass);
+    padding: 4rem;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 1s 0.3s forwards;
+}
+
+.fade-in-delay-2 {
+    opacity: 0;
+    animation: fadeIn 1s 0.6s forwards;
+}
+
+.fade-in-delay-3 {
+    opacity: 0;
+    animation: fadeIn 1s 0.9s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 5rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reserva-box {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
