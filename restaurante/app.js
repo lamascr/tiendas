@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadMenu() {
     try {
-        const response = await fetch('menu.xlsx');
+        const response = await fetch('2menu.xlsx');
         if (!response.ok) throw new Error('Failed to load menu file');
 
         const arrayBuffer = await response.arrayBuffer();
