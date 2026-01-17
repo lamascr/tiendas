@@ -364,43 +364,48 @@ select {
         grid-template-columns: 1fr;
     }
 
-    .reserva-box {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    .reserva-box {}
+
+    #chat-send {
+        background: var(--gold);
+        border: none;
+        color: var(--dark);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
     }
-}
 
-/* n8n Chat Customization */
-:root {
-    --chat--color--primary: #d4af37;
-    /* Gold */
-    --chat--color--primary-shade-50: #b8860b;
-    --chat--color--primary--shade-100: #8f6b0f;
-    --chat--color--secondary: #0a0a0a;
-    /* Dark */
-    --chat--color-secondary-shade-50: #1a1a1a;
-    --chat--color-white: #ffffff;
-    --chat--color-light: #f5f5f5;
-    --chat--color-light-shade-50: #e0e0e0;
-    --chat--color-light-shade-100: #cccccc;
-    --chat--color-medium: #888888;
-    --chat--color-dark: #050505;
-    --chat--color-disabled: #555555;
-    --chat--color-typing: #d4af37;
+    /* n8n Chat Customization */
+    :root {
+        --chat--color--primary: #d4af37;
+        /* Gold */
+        --chat--color--primary-shade-50: #b8860b;
+        --chat--color--primary--shade-100: #8f6b0f;
+        --chat--color--secondary: #0a0a0a;
+        /* Dark */
+        --chat--color-secondary-shade-50: #1a1a1a;
+        --chat--color-white: #ffffff;
+        --chat--color-light: #f5f5f5;
+        --chat--color-light-shade-50: #e0e0e0;
+        --chat--color-light-shade-100: #cccccc;
+        --chat--color-medium: #888888;
+        --chat--color-dark: #050505;
+        --chat--color-disabled: #555555;
+        --chat--color-typing: #d4af37;
 
-    --chat--spacing: 1rem;
-    --chat--border-radius: 8px;
-    --chat--transition-duration: 0.3s;
+        --chat--spacing: 1rem;
+        --chat--border-radius: 8px;
+        --chat--transition-duration: 0.3s;
 
-    --chat--window--width: 380px;
-    --chat--window--height: 600px;
+        --chat--window--width: 380px;
+        --chat--window--height: 600px;
 
-    --chat--header--background: var(--chat--color--primary);
-    --chat--header--color: var(--chat--color--secondary);
+        --chat--header--background: var(--chat--color--primary);
+        --chat--header--color: var(--chat--color--secondary);
 
-    --chat--message--user--background: var(--chat--color--primary);
-    --chat--message--user--color: var(--chat--color--secondary);
+        --chat--message--user--background: var(--chat--color--primary);
+        --chat--message--user--color: var(--chat--color--secondary);
 
-    --chat--toggle--background: var(--chat--color--primary);
-    --chat--toggle--color: var(--chat--color--secondary);
-}
+        --chat--toggle--background: var(--chat--color--primary);
+        --chat--toggle--color: var(--chat--color--secondary);
+    }

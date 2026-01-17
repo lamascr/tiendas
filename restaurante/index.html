@@ -165,17 +165,8 @@
                 messages.appendChild(loadingDiv);
 
                 try {
-                    // REPLACE WITH YOUR N8N WEBHOOK URL
+                    // WEBHOOK URL provided by user
                     const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook-test/chat';
-
-                    if (WEBHOOK_URL === 'https://production-n8n.fly.dev/webhook-test/chat') {
-
-                        setTimeout(() => {
-                            loadingDiv.remove();
-                            addMessage("¡El chat está listo! Configura el Webhook en el código para conectarme a n8n.", 'bot');
-                        }, 1000);
-                        return;
-                    }
 
                     const response = await fetch(WEBHOOK_URL, {
                         method: 'POST',
