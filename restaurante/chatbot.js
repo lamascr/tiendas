@@ -1,17 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
+// =========================
+// CONFIGURACIÓN
+// =========================
+const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook/chatbot';
 
-    // =========================
-    // CONFIGURACIÓN
-    // =========================
-    const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook-test/chatbot';
-
-    // =========================
-    // CREACIÓN DEL WIDGET
-    // =========================
-    if (!document.getElementById('chatbot-widget')) {
-        const widgetContainer = document.createElement('div');
-        widgetContainer.id = 'chatbot-widget';
-        widgetContainer.innerHTML = `
+// =========================
+// CREACIÓN DEL WIDGET
+// =========================
+if (!document.getElementById('chatbot-widget')) {
+    const widgetContainer = document.createElement('div');
+    widgetContainer.id = 'chatbot-widget';
+    widgetContainer.innerHTML = `
         <div id="chat-toggle-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -52,166 +50,166 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
         `;
-        document.body.appendChild(widgetContainer);
-    }
+    document.body.appendChild(widgetContainer);
+}
 
-    // =========================
-    // REFERENCIAS DOM
-    // =========================
-    const toggleBtn = document.getElementById('chat-toggle-btn');
-    const closeBtn = document.getElementById('close-chat');
-    const chatWindow = document.getElementById('chat-window');
-    const messagesContainer = document.getElementById('chat-messages');
-    const userInput = document.getElementById('user-input');
-    const sendBtn = document.getElementById('send-btn');
+// =========================
+// REFERENCIAS DOM
+// =========================
+const toggleBtn = document.getElementById('chat-toggle-btn');
+const closeBtn = document.getElementById('close-chat');
+const chatWindow = document.getElementById('chat-window');
+const messagesContainer = document.getElementById('chat-messages');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-    // =========================
-    // ESTADO
-    // =========================
-    let isOpen = false;
-    let isTyping = false;
-    const sessionId = 'session-' + crypto.randomUUID();
+// =========================
+// ESTADO
+// =========================
+let isOpen = false;
+let isTyping = false;
+const sessionId = 'session-' + crypto.randomUUID();
 
-    // =========================
-    // EVENTOS
-    // =========================
-    toggleBtn.addEventListener('click', toggleChat);
-    closeBtn.addEventListener('click', toggleChat);
-    sendBtn.addEventListener('click', sendMessage);
+// =========================
+// EVENTOS
+// =========================
+toggleBtn.addEventListener('click', toggleChat);
+closeBtn.addEventListener('click', toggleChat);
+sendBtn.addEventListener('click', sendMessage);
 
-    userInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
+userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
 
-    // =========================
-    // FUNCIONES
-    // =========================
-    function toggleChat() {
-        isOpen = !isOpen;
-        chatWindow.classList.toggle('hidden', !isOpen);
-        if (isOpen) setTimeout(() => userInput.focus(), 100);
-    }
+// =========================
+// FUNCIONES
+// =========================
+function toggleChat() {
+    isOpen = !isOpen;
+    chatWindow.classList.toggle('hidden', !isOpen);
+    if (isOpen) setTimeout(() => userInput.focus(), 100);
+}
 
-    async function sendMessage() {
-        const text = userInput.value.trim();
-        if (!text || isTyping) return;
+async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text || isTyping) return;
 
-        addMessage(text, 'user');
-        userInput.value = '';
-        showTypingIndicator();
+    addMessage(text, 'user');
+    userInput.value = '';
+    showTypingIndicator();
 
-        try {
-            const response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message: text,
-                    sessionId,
-                    timestamp: new Date().toISOString()
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const rawText = await response.text();
-
-            let data;
-            try {
-                data = JSON.parse(rawText);
-            } catch {
-                data = rawText;
-            }
-
-            removeTypingIndicator();
-
-            let botText = 'Lo siento, no se recibió una respuesta válida.';
-
-            console.log('Raw response:', rawText);
-            console.log('Parsed data:', data);
-
-            // botText is already declared above
-            if (typeof data === 'string') {
-                botText = data;
-            } else if (Array.isArray(data) && data.length > 0) {
-                const firstItem = data[0];
-                botText = firstItem.output ||
-                    firstItem.message ||
-                    firstItem.text ||
-                    firstItem.response ||
-                    (firstItem.json && firstItem.json.output) ||
-                    (firstItem.body && firstItem.body.message) ||
-                    JSON.stringify(data);
-            } else if (typeof data === 'object') {
-                botText = data.output ||
-                    data.message ||
-                    data.text ||
-                    data.response ||
-                    JSON.stringify(data);
-            } else {
-                botText = 'Respuesta no reconocida.';
-            }
-
-            console.log('Final bot text:', botText);
-            addMessage(botText, 'bot');
-
-        } catch (error) {
-            console.error('Chatbot error:', error);
-            removeTypingIndicator();
-            addMessage(
-                'Error de conexión con el asistente. Inténtelo de nuevo más tarde.',
-                'bot'
-            );
-        }
-    }
-
-    function addMessage(text, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${sender}-message`;
-
-        let formattedText = text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\n/g, '<br>');
-
-        const time = new Date().toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit'
+    try {
+        const response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: text,
+                sessionId,
+                timestamp: new Date().toISOString()
+            })
         });
 
-        messageDiv.innerHTML = `
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const rawText = await response.text();
+
+        let data;
+        try {
+            data = JSON.parse(rawText);
+        } catch {
+            data = rawText;
+        }
+
+        removeTypingIndicator();
+
+        let botText = 'Lo siento, no se recibió una respuesta válida.';
+
+        console.log('Raw response:', rawText);
+        console.log('Parsed data:', data);
+
+        // botText is already declared above
+        if (typeof data === 'string') {
+            botText = data;
+        } else if (Array.isArray(data) && data.length > 0) {
+            const firstItem = data[0];
+            botText = firstItem.output ||
+                firstItem.message ||
+                firstItem.text ||
+                firstItem.response ||
+                (firstItem.json && firstItem.json.output) ||
+                (firstItem.body && firstItem.body.message) ||
+                JSON.stringify(data);
+        } else if (typeof data === 'object') {
+            botText = data.output ||
+                data.message ||
+                data.text ||
+                data.response ||
+                JSON.stringify(data);
+        } else {
+            botText = 'Respuesta no reconocida.';
+        }
+
+        console.log('Final bot text:', botText);
+        addMessage(botText, 'bot');
+
+    } catch (error) {
+        console.error('Chatbot error:', error);
+        removeTypingIndicator();
+        addMessage(
+            'Error de conexión con el asistente. Inténtelo de nuevo más tarde.',
+            'bot'
+        );
+    }
+}
+
+function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+
+    let formattedText = text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+
+    const time = new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    messageDiv.innerHTML = `
             ${formattedText}
             <div class="message-time">${time}</div>
         `;
 
-        messagesContainer.appendChild(messageDiv);
-        scrollToBottom();
-    }
+    messagesContainer.appendChild(messageDiv);
+    scrollToBottom();
+}
 
-    function showTypingIndicator() {
-        if (isTyping) return;
-        isTyping = true;
+function showTypingIndicator() {
+    if (isTyping) return;
+    isTyping = true;
 
-        const indicator = document.createElement('div');
-        indicator.className = 'typing-indicator';
-        indicator.innerHTML = `
+    const indicator = document.createElement('div');
+    indicator.className = 'typing-indicator';
+    indicator.innerHTML = `
             <div class="typing-dot"></div>
             <div class="typing-dot"></div>
             <div class="typing-dot"></div>
         `;
 
-        messagesContainer.appendChild(indicator);
-        scrollToBottom();
-    }
+    messagesContainer.appendChild(indicator);
+    scrollToBottom();
+}
 
-    function removeTypingIndicator() {
-        isTyping = false;
-        const indicator = document.querySelector('.typing-indicator');
-        if (indicator) indicator.remove();
-    }
+function removeTypingIndicator() {
+    isTyping = false;
+    const indicator = document.querySelector('.typing-indicator');
+    if (indicator) indicator.remove();
+}
 
-    function scrollToBottom() {
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
+function scrollToBottom() {
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
 
-});
+

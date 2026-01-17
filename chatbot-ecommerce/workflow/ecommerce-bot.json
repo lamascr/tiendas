@@ -5,12 +5,16 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "chatbot",
+        "responseMode": "responseNode",
         "options": {}
       },
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
-      "position": [460, 300],
+      "position": [
+        460,
+        300
+      ],
       "webhookId": "35cfb3de-6a18-4878-8d73-abe2130a0355"
     },
     {
@@ -28,7 +32,10 @@
       "name": "Hola?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
-      "position": [680, 160]
+      "position": [
+        680,
+        160
+      ]
     },
     {
       "parameters": {
@@ -45,7 +52,10 @@
       "name": "Pedido?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
-      "position": [680, 300]
+      "position": [
+        680,
+        300
+      ]
     },
     {
       "parameters": {
@@ -62,7 +72,10 @@
       "name": "Precio?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
-      "position": [680, 440]
+      "position": [
+        680,
+        440
+      ]
     },
     {
       "parameters": {
@@ -78,7 +91,10 @@
       "name": "Welcome Message",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
-      "position": [900, 120]
+      "position": [
+        900,
+        120
+      ]
     },
     {
       "parameters": {
@@ -94,7 +110,10 @@
       "name": "Order Status",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
-      "position": [900, 280]
+      "position": [
+        900,
+        280
+      ]
     },
     {
       "parameters": {
@@ -110,7 +129,10 @@
       "name": "Price Inquiry",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
-      "position": [900, 440]
+      "position": [
+        900,
+        440
+      ]
     },
     {
       "parameters": {
@@ -126,7 +148,10 @@
       "name": "Default Fallback",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
-      "position": [900, 600]
+      "position": [
+        900,
+        600
+      ]
     },
     {
       "parameters": {
@@ -137,7 +162,10 @@
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
-      "position": [1120, 300]
+      "position": [
+        1120,
+        300
+      ]
     }
   ],
   "connections": {
