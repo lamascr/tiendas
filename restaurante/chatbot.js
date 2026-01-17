@@ -128,19 +128,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let botText = 'Lo siento, no se recibió una respuesta válida.';
 
+            console.log('Raw response:', rawText);
+            console.log('Parsed data:', data);
+
+            let botText = '';
+
             if (typeof data === 'string') {
                 botText = data;
-            } else if (Array.isArray(data)) {
-                // Check if the first item has 'output', 'message' or 'text'
-                botText = data[0]?.output || data[0]?.message || data[0]?.text || JSON.stringify(data);
-            } else if (data.output) {
-                botText = data.output;
-            } else if (data.message) {
-                botText = data.message;
-            } else if (data.response) {
-                botText = data.response;
+            } else if (Array.isArray(data) && data.length > 0) {
+                const firstItem = data[0];
+                botText = firstItem.output ||
+                    firstItem.message ||
+                    firstItem.text ||
+                    firstItem.response ||
+                    (firstItem.json && firstItem.json.output) ||
+                    (firstItem.body && firstItem.body.message) ||
+                    JSON.stringify(data);
+            } else if (typeof data === 'object') {
+                botText = data.output ||
+                    data.message ||
+                    data.text ||
+                    data.response ||
+                    JSON.stringify(data);
+            } else {
+                botText = 'Respuesta no reconocida.';
             }
 
+            console.log('Final bot text:', botText);
             addMessage(botText, 'bot');
 
         } catch (error) {
