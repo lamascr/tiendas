@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================
     // CONFIGURACIÓN
     // =========================
-    const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook-test/chatbot';
+    const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook/71551c27-bcad-4a7a-86d1-2fe8b5e49a49/chat';
 
     // =========================
     // CREACIÓN DEL WIDGET
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    message: text,
+                    chatInput: text,
                     sessionId,
                     timestamp: new Date().toISOString()
                 })
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Raw response:', rawText);
             console.log('Parsed data:', data);
 
-            let botText = '';
+            botText = '';
 
             if (typeof data === 'string') {
                 botText = data;
