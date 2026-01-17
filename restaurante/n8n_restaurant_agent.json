@@ -1,0 +1,320 @@
+{
+    "name": "Restaurante AI Agent",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "chat",
+                "options": {}
+            },
+            "id": "webhook-web",
+            "name": "Webhook Web Chat",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                220,
+                240
+            ],
+            "webhookId": "web-chat-hook"
+        },
+        {
+            "parameters": {
+                "model": "gpt-4o-mini",
+                "options": {
+                    "systemMessage": "Eres el asistente virtual de 'Lumière Bistro'. \nTu tono es elegante, amable y profesional.\n\nTienes acceso a herramientas para:\n1. Consultar el menú (Google Sheets).\n2. Crear reservas.\n3. Tomar pedidos completos.\n\nSIEMPRE antes de responder sobre platos, CONSULTA la herramienta de menú.\nNO inventes precios ni platos.\nPara reservas y pedidos, pide todos los datos necesarios antes de llamar a la herramienta."
+                }
+            },
+            "id": "ai-agent",
+            "name": "AI Agent",
+            "type": "@n8n/n8n-nodes-langchain.agent",
+            "typeVersion": 1.6,
+            "position": [
+                660,
+                340
+            ]
+        },
+        {
+            "parameters": {
+                "authentication": "googleSheetsOAuth2",
+                "documentId": {
+                    "__rl": true,
+                    "mode": "fromView",
+                    "value": ""
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "mode": "fromView",
+                    "value": "Menu"
+                },
+                "options": {}
+            },
+            "id": "tool-menu",
+            "name": "Consultar Menu",
+            "type": "n8n-nodes-base.googleSheetsTool",
+            "typeVersion": 4.1,
+            "position": [
+                1000,
+                140
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "google-sheets-creds",
+                    "name": "Google Sheets Account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "authentication": "googleSheetsOAuth2",
+                "operation": "append",
+                "documentId": {
+                    "__rl": true,
+                    "mode": "fromView",
+                    "value": ""
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "mode": "fromView",
+                    "value": "Reservas"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "fecha": "={{ $json.fecha }}",
+                        "hora": "={{ $json.hora }}",
+                        "nombre": "={{ $json.nombre }}",
+                        "personas": "={{ $json.personas }}"
+                    },
+                    "matchingColumns": [],
+                    "schema": [
+                        {
+                            "id": "fecha",
+                            "displayName": "fecha",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "hora",
+                            "displayName": "hora",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "nombre",
+                            "displayName": "nombre",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "personas",
+                            "displayName": "personas",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        }
+                    ]
+                }
+            },
+            "id": "tool-reservas",
+            "name": "Guardar Reserva",
+            "type": "n8n-nodes-base.googleSheetsTool",
+            "typeVersion": 4.1,
+            "position": [
+                1000,
+                340
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "google-sheets-creds",
+                    "name": "Google Sheets Account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "authentication": "googleSheetsOAuth2",
+                "operation": "append",
+                "documentId": {
+                    "__rl": true,
+                    "mode": "fromView",
+                    "value": ""
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "mode": "fromView",
+                    "value": "Pedidos"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "pedido": "={{ $json.pedido_detalle }}",
+                        "total": "={{ $json.total }}",
+                        "cliente": "={{ $json.nombre_cliente }}"
+                    },
+                    "matchingColumns": [],
+                    "schema": [
+                        {
+                            "id": "pedido",
+                            "displayName": "pedido",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "total",
+                            "displayName": "total",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "cliente",
+                            "displayName": "cliente",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        }
+                    ]
+                }
+            },
+            "id": "tool-pedidos",
+            "name": "Crear Pedido",
+            "type": "n8n-nodes-base.googleSheetsTool",
+            "typeVersion": 4.1,
+            "position": [
+                1000,
+                540
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "google-sheets-creds",
+                    "name": "Google Sheets Account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "options": {}
+            },
+            "id": "memory",
+            "name": "Buffer Memory",
+            "type": "@n8n/n8n-nodes-langchain.memoryBuffer",
+            "typeVersion": 1.2,
+            "position": [
+                680,
+                560
+            ]
+        },
+        {
+            "parameters": {
+                "options": {}
+            },
+            "id": "openai-model",
+            "name": "OpenAI Chat Model",
+            "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+            "typeVersion": 1,
+            "position": [
+                500,
+                560
+            ],
+            "credentials": {
+                "openAiApi": {
+                    "id": "openai-creds",
+                    "name": "OpenAI Account"
+                }
+            }
+        }
+    ],
+    "connections": {
+        "Webhook Web Chat": {
+            "main": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Consultar Menu": {
+            "ai_tool": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "ai_tool",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Guardar Reserva": {
+            "ai_tool": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "ai_tool",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Crear Pedido": {
+            "ai_tool": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "ai_tool",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Buffer Memory": {
+            "ai_memory": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "ai_memory",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "OpenAI Chat Model": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}
