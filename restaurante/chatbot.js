@@ -131,16 +131,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof data === 'string') {
                 botText = data;
             } else if (Array.isArray(data)) {
-                botText = data[0]?.message || JSON.stringify(data);
+                // Check if the first item has 'output', 'message' or 'text'
+                botText = data[0]?.output || data[0]?.message || data[0]?.text || JSON.stringify(data);
+            } else if (data.output) {
+                botText = data.output;
             } else if (data.message) {
                 botText = data.message;
             } else if (data.response) {
                 botText = data.response;
-            } else if (data.output) {
-                botText = data.output;
             }
 
-            addMessage(botText, 'output');
+            addMessage(botText, 'bot');
 
         } catch (error) {
             console.error('Chatbot error:', error);
