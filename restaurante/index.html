@@ -105,35 +105,108 @@
     </footer>
 
     <!-- Chat Widget -->
-    <!-- Official n8n Chat Widget -->
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-    <script type="module">
-        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-toggle" aria-label="Abrir chat">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+        <div class="chat-window hidden">
+            <div class="chat-header">
+                <h3>Asistente Lumière</h3>
+                <button id="chat-close">×</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    ¡Hola! Soy el asistente virtual de Lumière. ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Escribe tu mensaje...">
+                <button id="chat-send">➤</button>
+            </div>
+        </div>
+    </div>
 
-        createChat({
-            webhookUrl: 'https://production-n8n.fly.dev/webhook/35cfb3de-6a18-4878-8d73-abe2130a0355/chat',
-            target: '#n8n-chat',
-            mode: 'window',
-            showWelcomeScreen: true,
-            defaultLanguage: 'es',
-            initialMessages: [
-                '¡Hola! 👋',
-                'Soy el asistente virtual de Lumière Bistro. ¿En qué puedo ayudarte hoy?'
-            ],
-            i18n: {
-                es: {
-                    title: 'Asistente Lumière',
-                    subtitle: "Pregúntame sobre el menú o reservas.",
-                    getStarted: 'Nueva Conversación',
-                    inputPlaceholder: 'Escribe tu pregunta...',
-                },
-            },
-            style: {
-                width: '100%',
-                height: '100%',
-                position: 'relative',
-                zIndex: '9999',
+    <script src="app.js"></script>
+    <script>
+        // Simple Chat Widget Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('chat-toggle');
+            const window = document.querySelector('.chat-window');
+            const close = document.getElementById('chat-close');
+            const input = document.getElementById('chat-input-field');
+            const send = document.getElementById('chat-send');
+            const messages = document.getElementById('chat-messages');
+
+            toggle.addEventListener('click', () => window.classList.toggle('hidden'));
+            close.addEventListener('click', () => window.classList.add('hidden'));
+
+            function addMessage(text, sender) {
+                const div = document.createElement('div');
+                div.classList.add('message', sender);
+                div.innerText = text;
+                messages.appendChild(div);
+                messages.scrollTop = messages.scrollHeight;
             }
+
+            async function sendMessage() {
+                const text = input.value.trim();
+                if (!text) return;
+
+                addMessage(text, 'user');
+                input.value = '';
+
+                // Show typing...
+                const loadingDiv = document.createElement('div');
+                loadingDiv.classList.add('message', 'bot', 'loading');
+                loadingDiv.innerText = 'Escribiendo...';
+                messages.appendChild(loadingDiv);
+
+                try {
+                    // REPLACE WITH YOUR N8N WEBHOOK URL
+                    const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook-test/chat';
+
+                    if (WEBHOOK_URL === 'https://production-n8n.fly.dev/webhook-test/chat') {
+
+                        setTimeout(() => {
+                            loadingDiv.remove();
+                            addMessage("¡El chat está listo! Configura el Webhook en el código para conectarme a n8n.", 'bot');
+                        }, 1000);
+                        return;
+                    }
+
+                    const response = await fetch(WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: text })
+                    });
+
+                    const data = await response.json();
+                    loadingDiv.remove();
+
+                    // Handle n8n response which can be an array [ { output: "..." } ] or object
+                    let botResponse = "";
+
+                    if (Array.isArray(data) && data.length > 0) {
+                        botResponse = data[0].output || data[0].text || JSON.stringify(data[0]);
+                    } else if (typeof data === 'object') {
+                        botResponse = data.output || data.text || "Recibido";
+                    }
+
+                    addMessage(botResponse, 'bot');
+
+                } catch (e) {
+                    loadingDiv.remove();
+                    addMessage("Error de conexión con el agente.", 'bot');
+                }
+            }
+
+            send.addEventListener('click', sendMessage);
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
         });
     </script>
 </body>
