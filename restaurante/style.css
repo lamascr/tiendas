@@ -370,7 +370,7 @@ select {
     }
 }
 
-/* n8n Chat Customization */
+/* n8n Chat Customization - Premium Gold & Dark Theme */
 :root {
     --chat--color--primary: #d4af37;
     /* Gold */
@@ -389,25 +389,58 @@ select {
     --chat--color-typing: #d4af37;
 
     --chat--spacing: 1rem;
-    --chat--border-radius: 20px;
+    --chat--border-radius: 16px;
     --chat--transition-duration: 0.3s;
 
-    --chat--window--width: 380px;
+    --chat--window--width: 400px;
     --chat--window--height: 600px;
 
-    --chat--header--background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    --chat--header--color: var(--dark);
+    /* Header Styling */
+    --chat--header--background: linear-gradient(135deg, #d4af37, #b8860b);
+    --chat--header--color: #000000;
+    --chat--heading--font-size: 1.2rem;
 
-    --chat--message--user--background: var(--gold);
-    --chat--message--user--color: var(--dark);
+    /* Message Styling */
+    --chat--message--bot--background: #1f1f1f;
+    --chat--message--bot--color: #e0e0e0;
+    --chat--message--bot--border: 1px solid rgba(212, 175, 55, 0.1);
 
-    --chat--toggle--background: var(--gold);
-    --chat--toggle--color: var(--dark);
+    --chat--message--user--background: #d4af37;
+    --chat--message--user--color: #000000;
+
+    /* Input Area */
+    --chat--input--background: #1a1a1a;
+    --chat--input--color: #ffffff;
+    --chat--input--placeholder-color: #888888;
+    --chat--input--action--color: #d4af37;
+
+    /* Toggle Button */
+    --chat--toggle--background: #d4af37;
+    --chat--toggle--color: #000000;
     --chat--toggle--hover--scale: 1.1;
+    --chat--toggle--size: 64px;
 }
 
-/* Ensure z-index is high enough */
+/* Custom Overrides for the Widget Container */
 .n8n-chat-widget {
-    z-index: 9999 !important;
     font-family: 'Montserrat', sans-serif !important;
+    z-index: 9999 !important;
 }
+
+/* Animation for the toggle button (if accessible via standard DOM) */
+@keyframes pulse-gold {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* Note: Since n8n widget is in shadow DOM, these specific class overrides 
+   might depend on how the library exposes them. We rely mostly on variables. */
