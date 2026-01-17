@@ -187,7 +187,7 @@
                     loadingDiv.remove();
 
                     // Handle n8n response which can be an array [ { output: "..." } ] or object
-                    let botResponse = "";
+                    let botResponse = "Recibido";
 
                     if (Array.isArray(data) && data.length > 0) {
                         botResponse = data[0].output || data[0].text || JSON.stringify(data[0]);
