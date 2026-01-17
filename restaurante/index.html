@@ -185,8 +185,17 @@
 
                     const data = await response.json();
                     loadingDiv.remove();
-                    // Assuming n8n returns { output: "response text" } or similar
-                    addMessage(data.output || data.text || "Recibido", 'bot');
+
+                    // Handle n8n response which can be an array [ { output: "..." } ] or object
+                    let botResponse = "Recibido";
+
+                    if (Array.isArray(data) && data.length > 0) {
+                        botResponse = data[0].output || data[0].text || JSON.stringify(data[0]);
+                    } else if (typeof data === 'object') {
+                        botResponse = data.output || data.text || "Recibido";
+                    }
+
+                    addMessage(botResponse, 'bot');
 
                 } catch (e) {
                     loadingDiv.remove();
