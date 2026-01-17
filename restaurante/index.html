@@ -104,79 +104,34 @@
         </div>
     </footer>
 
-    <!-- Chat Widget -->
-    <div id="chat-widget" class="chat-widget">
-        <button id="chat-toggle" aria-label="Abrir chat">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </button>
-        <div class="chat-window hidden">
-            <div class="chat-header">
-                <h3>Asistente Lumière</h3>
-                <button id="chat-close">×</button>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-                <div class="message bot">
-                    ¡Hola! Soy el asistente virtual de Lumière. ¿En qué puedo ayudarte hoy?
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chat-input-field" placeholder="Escribe tu mensaje...">
-                <button id="chat-send">➤</button>
-            </div>
-        </div>
-    </div>
+    <!-- n8n Chat Widget Container -->
+    <div id="n8n-chat-container"></div>
 
     <script src="app.js"></script>
+
     <!-- n8n Chat Script -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
     <script type="module">
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
         createChat({
-            // Tu URL de webhook de n8n
             webhookUrl: 'https://production-n8n.fly.dev/webhook/35cfb3de-6a18-4878-8d73-abe2130a0355/chat',
-
-            // Configuración del webhook
-            webhookConfig: {
-                method: 'POST',
-                headers: {}
-            },
-
-            // Contenedor donde se incrustará el chat
             target: '#n8n-chat-container',
-
-            // Modo: 'window' (ventana emergente) o 'fullscreen' (pantalla completa)
             mode: 'window',
-
-            // Claves para el envío de datos (deben coincidir con tu workflow)
             chatInputKey: 'chatInput',
             chatSessionKey: 'sessionId',
-
-            // Cargar sesiones anteriores
             loadPreviousSession: true,
-
-            // Mostrar pantalla de bienvenida
             showWelcomeScreen: true,
-
-            // Metadatos adicionales para enviar al workflow
             metadata: {
                 restaurant: 'Lumière Bistro',
                 userType: 'website_visitor',
                 timestamp: new Date().toISOString()
             },
-
-            // Idioma
             defaultLanguage: 'es',
-
-            // Mensajes iniciales
             initialMessages: [
                 '¡Bienvenido a Lumière Bistro! 👨‍🍳',
                 'Soy su asistente virtual gourmet. ¿En qué puedo ayudarle hoy?'
             ],
-
-            // Personalización de textos en español
             i18n: {
                 es: {
                     title: 'Lumière Bistro',
@@ -188,42 +143,14 @@
                     close: 'Cerrar',
                     open: 'Abrir chat',
                     thinking: 'Pensando...',
-                    uploadFile: 'Subir archivo',
-                    dropFile: 'Arrastre un archivo aquí',
-                    or: 'o',
-                    clickToUpload: 'haga clic para subir',
-                    fileTypeError: 'Tipo de archivo no permitido',
-                    fileSizeError: 'Archivo demasiado grande'
                 }
             },
-
-            // Configuraciones adicionales
-            allowFileUploads: false, // Desactivar subida de archivos
-            enableStreaming: false,   // Streaming de respuestas (requiere config en n8n)
-
-            // Función callback cuando se envía un mensaje
-            onMessageSent: (message) => {
-                console.log('Mensaje enviado:', message);
-            },
-
-            // Función callback cuando se recibe una respuesta
-            onMessageReceived: (response) => {
-                console.log('Respuesta recibida:', response);
-            },
-
-            // Función callback cuando ocurre un error
-            onError: (error) => {
-                console.error('Error en el chat:', error);
-            }
+            allowFileUploads: false,
+            onMessageSent: (message) => console.log('Mensaje enviado:', message),
+            onMessageReceived: (response) => console.log('Respuesta recibida:', response),
+            onError: (error) => console.error('Error en el chat:', error)
         });
-
-        // Mostrar mensaje de depuración en consola
-        console.log('n8n Chat inicializado para Lumière Bistro');
-        console.log('Webhook URL: https://production-n8n.fly.dev/webhook/35cfb3de-6a18-4878-8d73-abe2130a0355/chat');
     </script>
+</body>
 
-    <!-- Script para depurar la conexión con n8n -->
-    <script>
-</body >
-
-</html >
+</html>
