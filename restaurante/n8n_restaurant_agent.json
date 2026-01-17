@@ -5,6 +5,7 @@
             "parameters": {
                 "httpMethod": "POST",
                 "path": "chat",
+                "responseMode": "responseNode",
                 "options": {}
             },
             "id": "webhook-web",
