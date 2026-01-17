@@ -4,9 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // The user edited the workflow to path 'chatbot'. 
     // Assuming the base URL is the same generic production one.
     // Ideally, this should be the specific production URL for the deployed workflow.
-    const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook-test/chat';
+    const WEBHOOK_URL = 'https://production-n8n.fly.dev/webhook-test/chatbot';
 
-    // --- DOM Elements ---https://production-n8n.fly.dev/webhook-test/chat
+    // --- DOM Elements --
+    // https://production-n8n.fly.dev/webhook-test/chatbot-https://production-n8n.fly.dev/webhook-test/chat
     // We will inject the widget HTML if it doesn't exist, or expect it to be there.
     // For safety, let's create the HTML dynamically so we don't have to touch index.html too much 
     // except for removing the old trash.
