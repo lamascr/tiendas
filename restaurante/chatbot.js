@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botText = data.output;
             }
 
-            addMessage(botText, 'bot');
+            addMessage(botText, 'output');
 
         } catch (error) {
             console.error('Chatbot error:', error);
