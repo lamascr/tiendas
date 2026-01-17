@@ -4,110 +4,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lumière Bistro - Experiencia gastronómica de alta cocina y atmósfera exclusiva.">
-    <title>Lumière Bistro | Alta Cocina & Exclusividad</title>
+    <title>King Doner Kebab | Productos Halal - Pizzería y Taco Francés</title>
+    <meta name="description"
+        content="King Doner Kebab - Auténtica comida turca con productos 100% Halal. Especialistas en Doner Kebab, Pizzas y Taco Francés. ¡Llámanos! 602 84 53 29">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- SheetJS Library for reading Excel files -->
-    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 </head>
 
 <body>
     <header id="main-header">
         <nav class="container">
-            <div class="logo">LUMIÈRE<span>.</span></div>
-            <ul class="nav-links">
-                <li><a href="#hero">Inicio</a></li>
-                <li><a href="#menu">El Menú</a></li>
-                <li><a href="#reservas">Reservas</a></li>
-            </ul>
-            <div class="cta-nav">
-                <a href="#reservas" class="btn-outline">Mesa Directa</a>
+            <div class="nav-left">
+                <img src="logo.png" alt="King Doner Kebab Logo" class="logo-img">
             </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="tel:602845329" class="btn-call">📞 602 84 53 29</a>
         </nav>
     </header>
 
     <main>
-        <section id="hero">
+        <section id="hero" class="hero-section">
             <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <span class="hero-subtitle fade-in">Un viaje a través de los sentidos</span>
-                <h1 class="fade-in-delay">Sabor, <br><span class="accent">Luz & Maestría</span></h1>
-                <p class="fade-in-delay-2">Descubra una propuesta gastronómica donde la tradición se encuentra con la
-                    vanguardia en un entorno inigualable.</p>
-                <div class="hero-actions fade-in-delay-3">
-                    <a href="#menu" class="btn-gold">Explorar Menú</a>
-                    <a href="#reservas" class="btn-text">Ver Disponibilidad</a>
+            <div class="hero-content">
+                <div class="halal-badge">
+                    <span class="halal-icon">☪</span>
+                    <span>100% HALAL</span>
+                </div>
+                <h1>KING DONER KEBAB</h1>
+                <p class="tagline">Auténtica Comida Turca • Productos Halal Certificados</p>
+                <p class="subtitle">Pizzería • Doner Kebab • Taco Francés</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn-primary">Ver Menú Completo</a>
+                    <a href="tel:602845329" class="btn-secondary">Llamar Ahora</a>
                 </div>
             </div>
+            <div class="scroll-indicator">↓</div>
         </section>
 
-        <section id="menu" class="container section-padding">
-            <div class="section-header">
-                <h2 class="serif-title">Selección del Chef</h2>
-                <p>Ingredientes locales, técnicas globales.</p>
-            </div>
-
-            <div class="menu-filters">
-                <button class="filter-btn active" data-filter="todos">Todos</button>
-                <button class="filter-btn" data-filter="entrantes">Entrantes</button>
-                <button class="filter-btn" data-filter="principales">Principales</button>
-                <button class="filter-btn" data-filter="postres">Postres</button>
-            </div>
-
-            <!-- Dynamic Menu Grid -->
-            <div class="menu-grid" id="menu-grid">
-                <!-- Items will be loaded from menu.xlsx -->
-                <div class="loading-message" style="text-align:center; grid-column: 1/-1; padding: 2rem;">
-                    Cargando menú...
-                </div>
-            </div>
-        </section>
-
-        <section id="reservas">
-            <div class="container reserva-box">
-                <div class="reserva-text">
-                    <h2 class="serif-title">Asegure su Mesa</h2>
-                    <p>Las mejores experiencias requieren planificación. Reserve su espacio para una noche inolvidable.
-                    </p>
-                </div>
-                <form id="reserva-form" class="glass-form">
-                    <div class="form-row">
-                        <input type="date" required>
-                        <select required>
-                            <option value="">Hora</option>
-                            <option>20:00</option>
-                            <option>21:00</option>
-                            <option>22:00</option>
-                        </select>
+        <section id="halal-info" class="halal-section">
+            <div class="container">
+                <div class="halal-content">
+                    <div class="halal-visual">
+                        <div class="halal-circle">
+                            <span class="halal-symbol">☪</span>
+                        </div>
                     </div>
-                    <input type="number" placeholder="Personas" min="1" max="10" required>
-                    <button type="submit" class="btn-gold full-width">Solicitar Reserva</button>
-                </form>
+                    <div class="halal-text">
+                        <h2>Productos 100% Halal</h2>
+                        <p>En King Doner Kebab nos enorgullecemos de ofrecer únicamente <strong>productos certificados
+                                Halal</strong>, garantizando la máxima calidad y respeto a las tradiciones culinarias
+                            islámicas.</p>
+                        <p>Toda nuestra carne es sacrificada según los preceptos islámicos y nuestros ingredientes
+                            cumplen rigurosamente con los estándares Halal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="especialidades" class="specialties-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">NUESTRAS ESPECIALIDADES</span>
+                    <h2>Lo Mejor de la Cocina Turca</h2>
+                </div>
+
+                <div class="specialties-grid">
+                    <div class="specialty-card fade-in">
+                        <div class="specialty-icon">🥙</div>
+                        <h3>Doner Kebab</h3>
+                        <p>Auténtico kebab turco elaborado con carne halal marinada con especias tradicionales. Servido
+                            en pan recién horneado con vegetales frescos y salsas caseras.</p>
+                        <div class="specialty-badge">Producto Estrella</div>
+                    </div>
+
+                    <div class="specialty-card fade-in">
+                        <div class="specialty-icon">🍕</div>
+                        <h3>Pizzería</h3>
+                        <p>Pizzas artesanales con ingredientes 100% halal. Masa fresca diaria, quesos de calidad premium
+                            y variedad de toppings deliciosos.</p>
+                        <div class="specialty-badge">Receta Propia</div>
+                    </div>
+
+                    <div class="specialty-card fade-in">
+                        <div class="specialty-icon">🌮</div>
+                        <h3>Taco Francés</h3>
+                        <p>Fusión única de sabores. Nuestro taco francés combina lo mejor de diferentes tradiciones
+                            culinarias con ingredientes halal de primera calidad.</p>
+                        <div class="specialty-badge">Especialidad</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">CARTA COMPLETA</span>
+                    <h2>Nuestro Menú</h2>
+                    <p>Todos nuestros productos son 100% Halal</p>
+                </div>
+
+                <div class="menu-gallery">
+                    <div class="menu-item-display fade-in">
+                        <img src="carta.jpg" alt="Carta King Doner Kebab - Página 1" class="menu-image">
+                        <div class="menu-overlay">
+                            <h4>Ver Menú Completo</h4>
+                        </div>
+                    </div>
+                    <div class="menu-item-display fade-in">
+                        <img src="carta2.jpg" alt="Carta King Doner Kebab - Página 2" class="menu-image">
+                        <div class="menu-overlay">
+                            <h4>Ver Menú Completo</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-icon">✓</span>
+                        <span>Ingredientes Frescos</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">☪</span>
+                        <span>100% Halal</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🌟</span>
+                        <span>Recetas Auténticas</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🚀</span>
+                        <span>Servicio Rápido</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reseñas" class="reviews-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">OPINIONES</span>
+                    <h2>Lo Que Dicen Nuestros Clientes</h2>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card fade-in">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"La mejor comida turca de la zona. Todo es halal y de excelente calidad.
+                            El doner kebab está increíble y el trato es muy amable."</p>
+                        <p class="reviewer">- Ana G.</p>
+                    </div>
+
+                    <div class="review-card fade-in">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Productos 100% halal como prometen. La pizza está deliciosa y el
+                            servicio es rápido. Muy recomendable para toda la familia."</p>
+                        <p class="reviewer">- Mohamed A.</p>
+                    </div>
+
+                    <div class="review-card fade-in">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"El taco francés es mi favorito. Ingredientes frescos y auténtico sabor.
+                            La certificación halal es muy importante para nosotros."</p>
+                        <p class="reviewer">- Fatima R.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mapa" class="map-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="pre-title">UBICACIÓN</span>
+                    <h2>Cómo Llegar</h2>
+                    <p>Visítanos en nuestra ubicación</p>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.5846831679847!2d-0.41848088465929834!3d39.47137617948574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f6528427c1b%3A0x2874e29f43f86e72!2sKing%20doner%20kebab!5e0!3m2!1ses!2ses!4v1705595829824!5m2!1ses!2ses"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info fade-in">
+                        <div class="section-title text-left">
+                            <span class="pre-title">CONTÁCTANOS</span>
+                            <h2>Visítanos o Llama</h2>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p><a href="tel:602845329" class="phone-link">602 84 53 29</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">🕐</div>
+                            <div>
+                                <h4>Horario</h4>
+                                <p>Lunes - Domingo: 12:00 - 23:30</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">☪</div>
+                            <div>
+                                <h4>Certificación Halal</h4>
+                                <p>Todos nuestros productos cumplen<br>con los estándares Halal</p>
+                            </div>
+                        </div>
+                        <div class="cta-box">
+                            <h3>¿Listo para ordenar?</h3>
+                            <a href="tel:602845329" class="btn-cta">Llamar Ahora: 602 84 53 29</a>
+                            <a href="https://wa.me/34602845329?text=Hola%2C%20quisiera%20hacer%20un%20pedido"
+                                class="btn-cta btn-whatsapp" style="margin-top: 1rem; background: #25D366;">💬 Pedir por
+                                WhatsApp</a>
+                        </div>
+                    </div>
+                    <div class="contact-image fade-in">
+                        <div class="image-placeholder">
+                            <div class="kebab-illustration">🥙</div>
+                            <p>Auténtico Sabor Turco</p>
+                            <p class="halal-cert">✓ Certificado Halal</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <div class="logo">LUMIÈRE<span>.</span></div>
-            <p>Calle de la Luz, 42. Madrid. | +34 912 345 678</p>
-            <div class="social-links">
-                <a href="#">IG</a>
-                <a href="#">FB</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>KING DONER KEBAB</h4>
+                    <p>Auténtica comida turca con productos 100% Halal. Especialistas en Doner Kebab, Pizzas y Taco
+                        Francés.</p>
+                    <div class="halal-footer-badge">
+                        <span class="halal-icon">☪</span>
+                        <span>Certificado Halal</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li>Doner Kebab</li>
+                        <li>Pizzería</li>
+                        <li>Taco Francés</li>
+                        <li>Para Llevar</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:602845329">📞 602 84 53 29</a></li>
+                        <li>Horario: Todos los días</li>
+                        <li>12:00 - 23:30</li>
+                    </ul>
+                </div>
             </div>
-            <p class="copyright">&copy; 2026 Lumière Bistro. Todos los derechos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 King Doner Kebab. Todos los derechos reservados. | Productos 100% Halal</p>
+            </div>
         </div>
+
+        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+        <script type="module">
+            import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+            createChat({
+                webhookUrl: 'https://production-n8n.fly.dev/webhook/71551c27-bcad-4a7a-86d1-2fe8b5e49a49/chat'
+            });
+            createChat({
+                webhookUrl: 'https://production-n8n.fly.dev/webhook/71551c27-bcad-4a7a-86d1-2fe8b5e49a49/chat',
+                webhookConfig: {
+                    method: 'POST',
+                    headers: {}
+                },
+                target: '#n8n-chat',
+                mode: 'window',
+                chatInputKey: 'chatInput',
+                chatSessionKey: 'sessionId',
+                loadPreviousSession: true,
+                metadata: {},
+                showWelcomeScreen: false,
+                defaultLanguage: 'en',
+                initialMessages: [
+                    'Hi there! 👋',
+                    'My name is Nathan. How can I assist you today?'
+                ],
+                i18n: {
+                    en: {
+                        title: 'Hi there! 👋',
+                        subtitle: "Start a chat. We're here to help you 24/7.",
+                        footer: '',
+                        getStarted: 'New Conversation',
+                        inputPlaceholder: 'Type your question..',
+                    },
+                },
+                enableStreaming: false,
+            });
+
+        </script>
     </footer>
 
-    <!-- n8n Chat Widget -->
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-    <div id="n8n-chat"></div>
-    <script type="module" src="chatbot.js"></script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/34602845329?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="whatsapp-float"
+        target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="white">
+            <path
+                d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.958 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62c0 7.51-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.317-0.116-0.548-0.174-0.779 0.174s-0.895 1.123-1.097 1.355c-0.202 0.231-0.405 0.26-0.751 0.087s-1.462-0.539-2.785-1.722c-1.030-0.922-1.726-2.059-1.929-2.406s-0.022-0.535 0.152-0.707c0.156-0.156 0.346-0.405 0.52-0.607s0.231-0.346 0.346-0.578c0.116-0.231 0.058-0.433-0.029-0.607s-0.779-1.875-1.068-2.569c-0.281-0.676-0.567-0.584-0.779-0.596-0.202-0.010-0.433-0.012-0.665-0.012s-0.607 0.087-0.925 0.433c-0.317 0.346-1.213 1.182-1.213 2.882s1.242 3.344 1.416 3.576c0.174 0.231 2.421 3.713 5.867 5.204 0.820 0.354 1.46 0.566 1.959 0.724 0.822 0.262 1.571 0.225 2.164 0.136 0.66-0.099 2.049-0.836 2.338-1.645s0.289-1.501 0.202-1.645c-0.087-0.145-0.317-0.231-0.665-0.405z">
+            </path>
+        </svg>
+    </a>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
